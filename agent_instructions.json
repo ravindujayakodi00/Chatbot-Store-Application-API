@@ -1,0 +1,12 @@
+{
+  "tasks": {
+    "display_products": {
+      "keywords": ["display", "show products", "view products"],
+      "description": "Use this tool to display available products."
+    },
+    "search_products": {
+      "keywords": ["search", "find", "look for category"],
+      "description": "Use this tool to search products by category."
+    }
+  }
+}

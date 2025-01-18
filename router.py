@@ -1,9 +1,9 @@
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel
-from util.orchestrated_agent import generate_chat_response
-
+from orchestrated_agent import OrchestratedAgent
 
 router = APIRouter()
+agent = OrchestratedAgent()
 
 
 class ChatRequest(BaseModel):
@@ -12,9 +12,9 @@ class ChatRequest(BaseModel):
 
 @router.post("/chat")
 async def chat(request: ChatRequest):
-    """Handle chat requests."""
+    """Handle chat requests using the orchestrated agent."""
     try:
-        response = generate_chat_response(request.prompt)
+        response = agent.get_response(request.prompt)
         return {"response": response}
-    except RuntimeError as e:
+    except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
